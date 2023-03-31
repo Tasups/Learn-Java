@@ -89,7 +89,7 @@ public class RockPaperScissorsLizardSpock {
         /******  PLAYER WINS GAME  ********/ 
         // player picks rock and wins
         else if (computerChoice == "scissors" && playerChoice == "rock" || computerChoice == "lizard" && playerChoice == "rock") {
-            result = "You chose " + playerChoice + " and the computer chose " + computerChoice + ". Since rock crushes "  + playerChoice + ", you win!";
+            result = "You chose " + playerChoice + " and the computer chose " + computerChoice + ". Since rock crushes "  + computerChoice + ", you win!";
         } 
         // player picks paper and wins
         else if (computerChoice == "rock" && playerChoice == "paper" || computerChoice == "Spock" && playerChoice == "paper") {
