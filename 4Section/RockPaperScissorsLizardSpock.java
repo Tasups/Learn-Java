@@ -6,7 +6,8 @@ public class RockPaperScissorsLizardSpock {
         int computerChoice = RNG();
         String computerGamePiece = gamePiece(computerChoice);
         
-        System.out.println("What game piece would you like to use?");
+        System.out.println("Let's play Rock, Paper, Scissors, Lizard, Spock.\n\nHere are the rules:\nScissors cuts paper, paper covers rock, rock crushes lizard, \nlizard poisons Spock, Spock smashes scissors, scissors decapitates lizard, \nlizard eats paper, paper disproves Spock, Spock vaporizes rock, \nand rock crushes scissors. \n\nWhoever throws the winning signal wins! If both of you make the same signal, it's a tie.\n");
+        System.out.println("What game signal would you like to use?");
         System.out.println("(1) for 'rock'\n(2) for 'paper'\n(3) for 'scissors'\n(4) for 'lizard'\n(5) for 'Spock'");
         
         Scanner scan = new Scanner(System.in);
