@@ -14,6 +14,11 @@ public class RockPaperScissorsLizardSpock {
         int userChoice = scan.nextInt();
         scan.close();
         
+        if (userChoice < 1 || userChoice > 5) {
+            System.out.println("You made an invalid choice. Please pick a number from 1 - 5.");
+            System.exit(0);
+        }
+        
         String playerGamePiece = gamePiece(userChoice);
         
         String result = whoWon(computerGamePiece, playerGamePiece);
