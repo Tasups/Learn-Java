@@ -6,8 +6,16 @@ public class Pokerito {
         
         Scanner scan = new Scanner(System.in);
         
-        System.out.println("Welcome to Pokerito, hit enter to start");
+        System.out.println("Let's play Pokerito. Type anything when you're ready.");
         String start = scan.nextLine();
+        System.out.println("It's like Poker, but a lot simpler.\n");
+        System.out.println("- There are two players, you and the computer.");
+        System.out.println("- The dealer will give each player one card.");
+        System.out.println("- Then, the dealer will draw five cards (the river).");
+        System.out.println("- The player with the most river matches wins!");
+        System.out.println("- If the matches are equal, everyone's a winner!\n");
+        System.out.println("- Ready? Press enter to start.");
+        String beginGame = scan.nextLine();
         
         int userRandomNumber = RNG();
         int computerRandomNumber = RNG();
@@ -21,11 +29,17 @@ public class Pokerito {
         System.out.println("Your Card:\n\n" + userCardFace);
         System.out.println("Computer's Card:\n\n" + computerCardFace);
         
-        System.out.println("\nNow, hit enter to run the river");    
+        System.out.println("\nNow, hit enter to draw a card and run the river");    
         String runTheRiver = scan.nextLine();
         
-        System.out.println("The River\n");
         for(int i = 0; i < 5; i++) {
+            
+            if (i != 0) {
+                System.out.println("Hit enter to draw a card: ");
+                scan.nextLine();
+            }
+           
+            System.out.println("Card " + (i + 1));
             int randomNumber = RNG();
             // how to store the cardnumber for scoring
             
@@ -38,7 +52,6 @@ public class Pokerito {
             
             int cardNumber = randomNumber;
             String cardFace = card(randomNumber);
-            System.out.println("Card " + (i + 1));
             System.out.print(cardFace + " \n");
         }
         
