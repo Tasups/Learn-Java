@@ -38,6 +38,7 @@ public class Pokerito {
                 System.out.println("Hit enter to draw a card: ");
                 scan.nextLine();
             }
+          
            
             System.out.println("Card " + (i + 1));
             int randomNumber = RNG();
