@@ -11,16 +11,18 @@ public class HighScore {
         } 
         
         int highScore = 0;
+        int seatNumber = 0;
         
         System.out.print("Here are the scores: ");
         for (int j = 0; j < scores.length; j++) {
             System.out.print(scores[j] + " ");
             if (scores[j] > highScore) {
-                highScore = scores[j];
+                highScore = scores[j]; 
+                seatNumber = j;
             }
         }
         
-        System.out.println("\nThe high score is: " + highScore + ". Give that person a cookie!");
+        System.out.println("\nThe high score is: " + highScore + ", impressive!. It is the person in seat " + seatNumber + ". Give that person a cookie!");
         
     }
     
