@@ -2,14 +2,34 @@ public class Hangman {
     
     public static void main(String[] args) {
         
-        System.out.print(drawMan(1));
-        System.out.print(drawMan(2));
-        System.out.print(drawMan(3));
-        System.out.print(drawMan(4));
-        System.out.print(drawMan(5));
-        System.out.print(drawMan(6));
-        System.out.print(drawMan(7));
+        System.out.println("Let's play Hangman, Fruit Edition!\n");
+        System.out.print(drawMan(1) + "\n");
         
+        String word = getWord(RNG());
+        int wordLength = word.length();
+        
+        System.out.print("\t" + createBoard(wordLength) + "\n");
+        
+        System.out.println("\t" + word);
+    
+    }
+    
+    public static String createBoard(int num) {
+        String board = " ";
+        for (int i = 0; i < num; i++) {
+            board+= "_ ";
+        }
+        return board;
+    }
+    
+    public static String getWord(int num) {
+        String[] fruits = {"apple", "orange", "banana", "strawberry", "raspberry", "grapes", "peach", "cantaloupe", "watermelon", "blackberry"};
+        return fruits[num];
+    }
+    
+    public static int RNG() {
+        double randomNumber = Math.random() * 10;
+        return (int)randomNumber;
     }
     
     public static String drawMan(int num) {
