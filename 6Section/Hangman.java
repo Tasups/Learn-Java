@@ -1,3 +1,6 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
 public class Hangman {
     
     public static void main(String[] args) {
@@ -9,8 +12,29 @@ public class Hangman {
         int wordLength = word.length();
         
         System.out.print("\t" + createBoard(wordLength) + "\n");
-        
         System.out.println("\t" + word);
+        
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Please select a letter: ");
+        char letter = scan.next().charAt(0);
+        scan.close();
+        
+        int[] indices = new int[10];
+        int counter = 0;
+        
+        for (int i = 0; i < wordLength; i++) {
+            if (letter == word.charAt(i)) {
+                System.out.print(i + " ");
+                indices[counter] = i;
+                counter++;
+            }
+        }
+        
+        System.out.print(Arrays.toString(indices));
+
+        // for (int i = 0; i < wordLength; i++) {
+        //     if(i == )
+        // }
     
     }
     
