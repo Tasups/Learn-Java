@@ -22,12 +22,12 @@ public class TicTacToe {
 
         while (winner == null) {
             System.out.println("Turn: X");
-            System.out.println("- pick a row and column number: ");
+            System.out.print("- pick a row and column number: ");
             row = scan.nextInt() - 1;
             column = scan.nextInt() - 1;
             System.out.println("\n");
             while (ticTacToeBoard[row][column] != " _ ") {
-                System.out.println("That position is taken, try again: ");
+                System.out.print("That position is taken, try again: ");
                 row = scan.nextInt() - 1;
                 column = scan.nextInt() - 1;
                 System.out.println("\n");
@@ -39,12 +39,12 @@ public class TicTacToe {
             if (winner != null) {break;}
             
             System.out.println("Turn: O");
-            System.out.println("- pick a row and column number: ");
+            System.out.print("- pick a row and column number: ");
             row = scan.nextInt() - 1;
             column = scan.nextInt() - 1;
             System.out.println("\n");
             while (ticTacToeBoard[row][column] != " _ ") {
-                System.out.println("That position is taken, try again: ");
+                System.out.print("That position is taken, try again: ");
                 row = scan.nextInt() - 1;
                 column = scan.nextInt() - 1;
                 System.out.println("\n");
