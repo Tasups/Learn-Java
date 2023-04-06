@@ -11,7 +11,9 @@ public class Hangman {
         String word = getWord(RNG());
         int wordLength = word.length();
         
+       
         System.out.print("\t" + createBoard(wordLength) + "\n");
+
         System.out.println("\t" + word);
         
         Scanner scan = new Scanner(System.in);
@@ -19,29 +21,62 @@ public class Hangman {
         char letter = scan.next().charAt(0);
         scan.close();
         
-        int[] indices = new int[10];
+        // finds how many times the letter exists so that we can create an array with the right amount of indices
         int counter = 0;
-        
         for (int i = 0; i < wordLength; i++) {
             if (letter == word.charAt(i)) {
                 System.out.print(i + " ");
-                indices[counter] = i;
                 counter++;
             }
         }
         
-        System.out.print(Arrays.toString(indices));
-
+        System.out.println("\ncounter: " + counter);
+        // create an array to store the indices of where the letter is found in the letter
+        int[] indicesToUpdate = new int[counter];
+        // keeps count of how many times the letter shows up so that we're storing only the instances where the letter shows up
+        int insertionCounter = 0;
+        // walks through the word and stores the index where the letter shows up in the word
+        for (int i = 0; i < wordLength; i++) {
+            if (letter == word.charAt(i)) {
+                indicesToUpdate[insertionCounter] = i;
+                insertionCounter++;
+            }
+        }
+        
+        System.out.println("\ninsertionCounter: " + insertionCounter);
+        System.out.println("indices array: " + Arrays.toString(indicesToUpdate));
+        
+        System.out.println(updateBoard(indicesToUpdate, wordLength, letter));
+        
+        //now we just have to recreate the board replacing letters in the correct indices
         // for (int i = 0; i < wordLength; i++) {
-        //     if(i == )
+        //     if (indices[i] == i){
+        //         board[i] = letter;
+        //     }
         // }
+        
     
+    }
+    
+    
+    public static String updateBoard(int[] indicesToUpdate, int wordLength, char letter) {
+        String board = " ";
+        int counter = 0;
+        for (int i = 0; i < wordLength; i++) {
+            if (counter < indicesToUpdate.length && indicesToUpdate[counter] == i ){
+                board += letter + " ";
+                counter++;
+            } else {
+                board += "_ ";
+            }
+        }
+        return board;
     }
     
     public static String createBoard(int num) {
         String board = " ";
         for (int i = 0; i < num; i++) {
-            board+= "_ ";
+            board += "_ ";
         }
         return board;
     }
