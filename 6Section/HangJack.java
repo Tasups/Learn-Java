@@ -1,30 +1,29 @@
-import java.util.Scanner;
 import java.util.Arrays;
+import java.util.Scanner;
 
-public class Hangman {
+public class HangJack {
     
     public static void main(String[] args) {
         
-        System.out.println("Let's play Hangman, Fruit Edition!\n");
-        System.out.print(drawMan(1) + "\n");
+        System.out.println("Let's play HangJack: Fruit Edition!\n");
+        
+        System.out.print(drawMan(0) + "\n");
         
         String word = getWord(RNG());
         int wordLength = word.length();
-       
-        System.out.print("\t" + createBoard(wordLength) + "\n\n");
-
-        System.out.println("\t" + word + "\n");
         
+        System.out.print("\t" + createInitialBoard(wordLength) + "\n\n");
         
-        
-        // point to consider looping
+        char[] wordToArray = new char[wordLength];
+        wordToArray = stringToArray(word, wordLength);
+        // this needs to be changed to an array full of _
+        System.out.println(Arrays.toString(wordToArray));
         
         Scanner scan = new Scanner(System.in);
         System.out.print("Please select a letter: ");
         char letter = scan.next().charAt(0);
         scan.close();
         
-        // finds how many times the letter exists so that we can create an array with the right amount of indices
         int counter = 0;
         for (int i = 0; i < wordLength; i++) {
             if (letter == word.charAt(i)) {
@@ -32,50 +31,41 @@ public class Hangman {
             }
         }
         
-        // create an array to store the indices of where the letter is found in the letter
         int[] indicesToUpdate = new int[counter];
+        indicesToUpdate = createIndicesToUpdateArray(word, letter, wordLength, indicesToUpdate);
+        System.out.println(Arrays.toString(indicesToUpdate));
+        
+        System.out.println();
+        String updatedBoard = updateBoard(indicesToUpdate, wordLength, letter);
+        System.out.println(updatedBoard);
+        
+    }
+    
+    public static int[] createIndicesToUpdateArray(String word, char letter, int wordLength, int[] indicesToUpdate) {
         // keeps count of how many times the letter shows up so that we're storing only the instances where the letter shows up
         int insertionCounter = 0;
         // walks through the word and stores the index where the letter shows up in the word
-        for (int i = 0; i < wordLength; i++) {
-            if (letter == word.charAt(i)) {
-                indicesToUpdate[insertionCounter] = i;
+        for (int j = 0; j < wordLength; j++) {
+            if (letter == word.charAt(j)) {
+                indicesToUpdate[insertionCounter] = j;
                 insertionCounter++;
             }
         }
-        
-        int[] indicesToNotUpdate = new int[];
-        
-        System.out.println(Arrays.toString(indicesToNotUpdate));
-        System.out.println("\n" + updateBoard(indicesToUpdate, wordLength, letter));
-        
-        // loop end?
-        
-        import java.util.*;
-
-public class StringtoCharArray {
-
-  public static void main(String args[]) {
-    String str = "Scaler"; // Given String
-
-    // Creating array of string length
-    char[] arr = new char[str.length()];
-
-    // Copy character by character into array
-    for (int i = 0; i < str.length(); i++) {
-      arr[i] = str.charAt(i);
-    }
-
-    // Printing the character array
-    for (char x : arr) {
-      System.out.println(x);
-    }
-  }
-}
-
-       
+        return indicesToUpdate;
     }
     
+    public static char[] updateWordArray(String ) {
+        int counter = 0;
+        for (int i = 0; i < wordToArray.length; i++) {
+            if (counter < wordToArray.length && indicesToUpdate[counter] == i ){
+                wordToArray[i] = letter;
+                counter++;
+            } else {
+                wordToArray[i] = '_';
+            }
+        }
+        return wordToArray;
+    }
     
     public static String updateBoard(int[] indicesToUpdate, int wordLength, char letter) {
         String board = " ";
@@ -91,17 +81,32 @@ public class StringtoCharArray {
         return board;
     }
     
-    public static String createBoard(int num) {
+    // public static String createBoard(int wordLength) {
+    //     String board = " ";
+    //     for (int i = 0; i < wordLength; i++) {
+    //         if (wordToArray.charAt(i) != "_"){
+    //             board += " " + wordToArray.charAt(i);
+    //         }
+    //         else {
+    //             board += "_ ";
+    //         }
+    //     }
+    // }
+    
+    public static String createInitialBoard(int wordLength) {
         String board = " ";
-        for (int i = 0; i < num; i++) {
+        for (int i = 0; i < wordLength; i++) {
             board += "_ ";
         }
         return board;
     }
     
-    public static String getWord(int num) {
-        String[] fruits = {"apple", "orange", "banana", "strawberry", "raspberry", "grapes", "peach", "cantaloupe", "watermelon", "blackberry"};
-        return fruits[num];
+    public static char[] stringToArray(String word, int wordLength) {
+        char[] wordToArray = new char[wordLength];
+        for (int i = 0; i < wordLength; i++) {
+            wordToArray[i] = word.charAt(i);;
+        }
+        return wordToArray;
     }
     
     public static int RNG() {
@@ -109,13 +114,27 @@ public class StringtoCharArray {
         return (int)randomNumber;
     }
     
+    public static String getWord(int num) {
+        String[] fruits = {"apple", "orange", "banana", "strawberry", "raspberry", "grapes", "peach", "cantaloupe", "watermelon", "blackberry"};
+        return fruits[num];
+    }
+    
     public static String drawMan(int num) {
         
         switch(num) {
-            case 1:
+            case 0:
                 return "\t   ______ \n"+
                        "\t   |    | \n"+
                        "\t        | \n"+
+                       "\t        | \n"+
+                       "\t        | \n"+
+                       "\t  ______|_\n"+
+                       "\t  |      |\n";
+                       
+            case 1:
+                return "\t   ______ \n"+
+                       "\t   |    | \n"+
+                       "\t   O    | \n"+
                        "\t        | \n"+
                        "\t        | \n"+
                        "\t  ______|_\n"+
@@ -125,7 +144,7 @@ public class StringtoCharArray {
                 return "\t   ______ \n"+
                        "\t   |    | \n"+
                        "\t   O    | \n"+
-                       "\t        | \n"+
+                       "\t   |    | \n"+
                        "\t        | \n"+
                        "\t  ______|_\n"+
                        "\t  |      |\n";
@@ -134,7 +153,7 @@ public class StringtoCharArray {
                 return "\t   ______ \n"+
                        "\t   |    | \n"+
                        "\t   O    | \n"+
-                       "\t   |    | \n"+
+                       "\t   |/   | \n"+
                        "\t        | \n"+
                        "\t  ______|_\n"+
                        "\t  |      |\n";
@@ -143,7 +162,7 @@ public class StringtoCharArray {
                 return "\t   ______ \n"+
                        "\t   |    | \n"+
                        "\t   O    | \n"+
-                       "\t   |/   | \n"+
+                       "\t  \\|/   | \n"+
                        "\t        | \n"+
                        "\t  ______|_\n"+
                        "\t  |      |\n";
@@ -153,20 +172,11 @@ public class StringtoCharArray {
                        "\t   |    | \n"+
                        "\t   O    | \n"+
                        "\t  \\|/   | \n"+
-                       "\t        | \n"+
-                       "\t  ______|_\n"+
-                       "\t  |      |\n";
-                       
-            case 6:
-                return "\t   ______ \n"+
-                       "\t   |    | \n"+
-                       "\t   O    | \n"+
-                       "\t  \\|/   | \n"+
                        "\t  /     | \n"+
                        "\t  ______|_\n"+
                        "\t  |      |\n";
                        
-            case 7:
+            case 6:
                 return "\t   ______ \n"+
                        "\t   |    | \n"+
                        "\t   O    | \n"+
