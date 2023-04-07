@@ -2,15 +2,23 @@ public class Person {
     private String name;
     private String nationality;
     private String dateOfBirth;
-    // private String[] passport;
+    private String[] passport;
     private int seatNumber;
     
-    public Person(String name, String nationality, String dateOfBirth, int seatNumber) {
+    public Person(String name, String nationality, String dateOfBirth, String[] passport, int seatNumber) {
         this.name = name;
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
-        // this.passport = passport;
+        this.passport = passport;
         this.seatNumber = seatNumber;
+    }
+    
+    public Person(Person source) {
+        this.name = source.name;
+        this.nationality = source.nationality;
+        this.dateOfBirth = source.dateOfBirth;
+        this.passport = source.passport;
+        this.seatNumber = source.seatNumber;
     }
     
     public String getName() {
@@ -36,13 +44,13 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
     
-    // public String[] getPassport() {
-    //     return passport;
-    // }
+    public String[] getPassport() {
+        return passport;
+    }
     
-    // public void setPassport(String[] passport) {
-    //     this.passport = passport;
-    // }
+    public void setPassport(String[] passport) {
+        this.passport = passport;
+    }
     
     public int getSeatNumber() {
         return seatNumber;
