@@ -18,6 +18,11 @@ public class Car {
         this.color = source.color;
     }
     
+    public void drive() {
+        System.out.println("\nYou bought a " + this.color + " " + this.year + " " + this.make + " for " + this.price + ".");
+        System.out.println("Thanks for buying from Hunter Automotive! Drive safe and come again!\n");
+    }
+    
     public String getMake() {
         return make;
     }
