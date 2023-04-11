@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Car {
     private String make;
     private double price;
@@ -24,6 +26,14 @@ public class Car {
     public void drive() {
         System.out.println("\nYou bought a " + this.color + " " + this.year + " " + this.make + " for " + this.price + ".");
         System.out.println("Thanks for buying from Hunter Automotive! Drive safe and come again!\n");
+    }
+    
+    public String toString() {
+        return "Make: " + this.make + ".\n" 
+            +  "Price: " + this.price + ".\n"
+            +  "Year: " + this.year + ".\n"
+            +  "Color: " + this.color + ".\n"
+            +  "Parts: " + Arrays.toString(parts) + ".\n";
     }
     
     public String getMake() {

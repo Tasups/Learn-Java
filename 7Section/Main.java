@@ -4,17 +4,21 @@ public class Main {
     
     public static void main(String[] args) {
      
+        // String[] spareParts = {"Tires", "Keys"};
+     
         // Car nissan = new Car("Nissan", 25_000, 2022, "silver", spareParts);
         // Car dodge = new Car("Dodge", 35_000, 2021, "black", spareParts);
         // Car nissan2 = new Car(nissan);
         
-        // nissan2.setColor("Yellow");
-        // nissan2.drive();
+        // System.out.println(dodge);
+        // System.out.println(nissan);
+        // System.out.println(nissan2);
         
         
-        // String[] newPassport = new String[]{"Jason Whisnant", "Paraguan", "08/24/1977"};
+        
+        
+        String[] newPassport = new String[]{"Jason Whisnant", "Paraguan", "08/24/1977"};
        
-        
         Person jason = new Person("Jason Whisnant", "Ashevillean", "08/24/1977", 17);
         
         System.out.println("Name: " + jason.getName());
@@ -33,6 +37,8 @@ public class Main {
         } else {
             System.out.println("We are sorry " + jason.getName() + ". We cannot process your application.");
         }
+        
+        System.out.println(jason);
         
         
         // Person twin = new Person(jason);
