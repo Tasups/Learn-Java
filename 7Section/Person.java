@@ -1,15 +1,17 @@
+import java.util.Arrays;
+
 public class Person {
     private String name;
     private String nationality;
     private String dateOfBirth;
-    // private String[] passport;
+    private String[] passport;
     private int seatNumber;
     
     public Person(String name, String nationality, String dateOfBirth, int seatNumber) {
         this.name = name;
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
-        //this.passport = passport;
+        this.passport = new String[3];
         this.seatNumber = seatNumber;
     }
     
@@ -17,7 +19,7 @@ public class Person {
         this.name = source.name;
         this.nationality = source.nationality;
         this.dateOfBirth = source.dateOfBirth;
-        //this.passport = source.passport;
+        // this.passport = Arrays.copyOf(source.passport, source.passport.length);
         this.seatNumber = source.seatNumber;
     }
     
@@ -60,13 +62,13 @@ public class Person {
         this.dateOfBirth = dateOfBirth;
     }
     
-    // public String[] getPassport() {
-    //     return passport;
-    // }
+    public String[] getPassport() {
+        return Arrays.copyOf(passport, passport.length);
+    }
     
-    // public void setPassport(String[] passport) {
-    //     this.passport = passport;
-    // }
+    public void setPassport() {
+        passport = new String[] {name, nationality, dateOfBirth};
+    }
     
     public int getSeatNumber() {
         return seatNumber;

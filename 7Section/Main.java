@@ -3,17 +3,19 @@ import java.util.Arrays;
 public class Main {
     
     public static void main(String[] args) {
-        
-        // Car nissan = new Car("Nissan", 25_000, 2022, "silver");
+     
+        // Car nissan = new Car("Nissan", 25_000, 2022, "silver", spareParts);
+        // Car dodge = new Car("Dodge", 35_000, 2021, "black", spareParts);
         // Car nissan2 = new Car(nissan);
-        // Car dodge = new Car("Dodge", 35_000, 2021, "black");
-        // nissan.drive();
+        
+        // nissan2.setColor("Yellow");
+        // nissan2.drive();
         
         
         // String[] newPassport = new String[]{"Jason Whisnant", "Paraguan", "08/24/1977"};
        
         
-        Person jason = new Person("Jason Whisnant", "Paraguan", "08/24/1977", 1);
+        Person jason = new Person("Jason Whisnant", "Ashevillean", "08/24/1977", 17);
         
         System.out.println("Name: " + jason.getName());
         System.out.println("Nationality: " + jason.getNationality());
@@ -22,7 +24,9 @@ public class Main {
         
         boolean passport = jason.applyPassport();
         if(passport) {
+            jason.setPassport();
             System.out.println("Congratulations, " + jason.getName() + ". Your passport was approved!");
+            System.out.println("Passport: " + Arrays.toString(jason.getPassport()));
             System.out.println("I'm sorry, your seat was taken, we will have to assign you another...");
             int seatChoice = jason.chooseSeat();
             System.out.println("We were able to secure another seat for you. You will be seated at seat: " + seatChoice + ". We hope you have a safe flight.");
