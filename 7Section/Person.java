@@ -33,10 +33,8 @@ public class Person {
         }
     }
     
-    public int chooseSeat() {
-        double randomDouble = Math.random() * 12;
-        int randomInt = (int)randomDouble;
-        return randomInt;
+    public void chooseSeat() {
+        this.seatNumber = ((int)(Math.random()* 11 + 1));
     }
 
     public String toString() {
