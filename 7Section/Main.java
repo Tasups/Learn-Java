@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
 
     static Store store = new Store();
@@ -22,8 +24,24 @@ public class Main {
         }
 
         printStore();
-
-
+        
+        System.out.print("\nPlease choose an integer between 0 - 9: ");
+        Scanner scan = new Scanner(System.in);
+        int choice = scan.nextInt();
+        scan.nextLine();
+        
+        Movie chosenMovie = store.getMovie(choice);
+        //System.out.print(chosenMovie.toString());
+        
+        System.out.print("Set a new rating for " + chosenMovie.getName() + ": ");
+        double newRating = scan.nextDouble();
+        scan.nextLine();
+        scan.close();
+        
+        chosenMovie.setRating(newRating);
+        store.setMovie(choice, chosenMovie);
+        
+        printStore();
     }
 
     public static void printStore() {
