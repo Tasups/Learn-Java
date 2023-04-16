@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Book {
     
     private String title;
@@ -54,4 +56,14 @@ public class Book {
     public String toString() {
         return this.title + " by " + this.author + " has been rated at " + this.rating + " and is available at " + this.price + "";
     }
+    
+    public boolean equals(Object o) {
+        if(o == this) return true;
+        if(!(o instanceof Book)) {
+            return false;
+        }
+        Book book = (Book) o;
+        return Objects.equals(title, book.title) && author == book.author && rating == book.rating && price == book.price;
+    }
+
 }
