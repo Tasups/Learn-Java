@@ -1,33 +1,33 @@
 public class Magazine {
     
-    private String author;
+    private String title;
     private String publisher;
     private int issueNumber;
     private int publicationYear;
     
-    public Magazine(String author, String publisher, int issueNumber, int publicationYear) {
-        setAuthor(author);
+    public Magazine(String title, String publisher, int issueNumber, int publicationYear) {
+        setTitle(title);
         setPublisher(publisher);
         setIssueNumber(issueNumber);
         setPublicationYear(publicationYear);
     }
     
     public Magazine(Magazine source) {
-        this.author = source.author;
+        this.title = source.title;
         this.publisher = source.publisher;
         this.issueNumber = source.issueNumber;
         this.publicationYear = source.publicationYear;
     }
     
-    public String getAuthor() {
-        return author;
+    public String getTitle() {
+        return title;
     }
     
-    public void setAuthor(String author) {
-        if (author == null || author.isBlank()) {
+    public void setTitle(String title) {
+        if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Author name cannot be null or empty");
         }
-        this.author = author;
+        this.title = title;
     }
     
     public String getPublisher() {
@@ -47,7 +47,7 @@ public class Magazine {
     
     public void setIssueNumber(int issueNumber) {
         if (issueNumber < 0) {
-            throw new IllegalArgumentException("Issue number cannot be less than zero")
+            throw new IllegalArgumentException("Issue number cannot be less than zero");
         }
         this.issueNumber = issueNumber;
     }
@@ -57,10 +57,14 @@ public class Magazine {
     }
     
     public void setPublicationYear(int publicationYear) {
-        if (publicationYear < 0) {
-            thrown new IllegalArgumentException("Publication year cannot be less than zero")
+        if (publicationYear <= 0) {
+            throw new IllegalArgumentException("Publication year cannot be less than zero");
         }
         this.publicationYear = publicationYear;
+    }
+    
+    public String toString() {
+        return this.title + " was published in Chronicle " + this.issueNumber + " by "+ this.publisher + " in " + this.publicationYear + "";
     }
     
 }
