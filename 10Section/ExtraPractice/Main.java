@@ -4,28 +4,49 @@ public class Main {
     
     public static void main(String[] args) {
         
-        Magazine magazine1 = new Magazine("Magazine 1", "Publisher 1", 1, 2020);
-        Magazine magazine2 = new Magazine("Magazine 2", "Publisher 2", 2, 2021);
+        /* TESTS FROM PART III ************************************************************************/
+        
+        Scanner scanner = new Scanner(System.in);
+    
+        String title = promptForTitle(scanner);
+        String publisher = promptForPublisher(scanner);
+        int issueNumber = promptForIssueNumber(scanner);
+        int publicationYear = promptForPublicationYear(scanner);
+    
+        Magazine newMagazine = new Magazine(title, publisher, issueNumber, publicationYear);
     
         MagazineLibrary library = new MagazineLibrary();
+        library.addMagazine(newMagazine);
+    
+        System.out.println("\nMagazine added to the library: " + newMagazine.toString());
         
-        // Test the addMagazine method
-        library.addMagazine(magazine1);
-        library.addMagazine(magazine2);
+        
+        /* TESTS FROM PART II ************************************************************************/
+        
+        // Magazine magazine1 = new Magazine("Magazine 1", "Publisher 1", 1, 2020);
+        // Magazine magazine2 = new Magazine("Magazine 2", "Publisher 2", 2, 2021);
     
-        // Test the getMagazine method
-        Magazine retrievedMagazine = library.getMagazine(0);
-        System.out.println(retrievedMagazine.getTitle());
-        System.out.println(retrievedMagazine.toString());
+        // MagazineLibrary library = new MagazineLibrary();
+        
+        // // Test the addMagazine method
+        // library.addMagazine(magazine1);
+        // library.addMagazine(magazine2);
     
-        // Test the setMagazine method
-        Magazine newMagazine = new Magazine("Magazine 3", "Publisher 3", 3, 2022);
-        library.setMagazine(0, newMagazine);
+        // // Test the getMagazine method
+        // Magazine retrievedMagazine = library.getMagazine(0);
+        // System.out.println(retrievedMagazine.getTitle());
+        // System.out.println(retrievedMagazine.toString());
     
-        // Verify that the magazine was updated
-        retrievedMagazine = library.getMagazine(0);
-        System.out.println(retrievedMagazine.getTitle());
-        System.out.println(retrievedMagazine.toString());
+        // // Test the setMagazine method
+        // Magazine newMagazine = new Magazine("Magazine 3", "Publisher 3", 3, 2022);
+        // library.setMagazine(0, newMagazine);
+    
+        // // Verify that the magazine was updated
+        // retrievedMagazine = library.getMagazine(0);
+        // System.out.println(retrievedMagazine.getTitle());
+        // System.out.println(retrievedMagazine.toString());
+        
+        /* TESTS FROM PART I ************************************************************************/
         
         // Magazine magazine1 = new Magazine("Magazine 1", "Publisher 1", 1, 2020);
         // System.out.println(magazine1.toString());
@@ -51,56 +72,69 @@ public class Main {
         if (input == null || input.isBlank()) {
             return true;
         }
+        return false;
     }
     
     public static boolean incorrectIssueNumber(int issueNumber) {
         if (issueNumber <= 0) {
             return true;
         }
+        return false;
     }
     
     public static boolean incorrectPublicationYear(int publicationYear) {
         if (publicationYear <= 0) {
             return true;
         }
+        return false;
     }
     
     public static String promptForTitle(Scanner scanner) {
         while (true) {
             System.out.println("\nPlease enter a valid title: ");
             String title = scanner.nextLine();
-            isNullOrBlank(title);
+            boolean invalidInput = isNullOrBlank(title);
+            if (!invalidInput) {
+                return title;
+            }
         }
-        return title;
     }
     
     public static String promptForPublisher(Scanner scanner) {
         while (true) {
             System.out.println("\nPlease enter a valid publisher: ");
             String publisher = scanner.nextLine();
-            isNullOrBlank(publisher);
+            boolean invalidInput = isNullOrBlank(publisher);
+            if (!invalidInput) {
+                return publisher;
+            }
         }
-        return publisher;
     }
     
     public static int promptForIssueNumber(Scanner scanner) {
         while (true) {
-            System.out.println("Please enter a valid issue number, greater than 0: ");
+            System.out.println("\nPlease enter a valid issue number, greater than 0: ");
             if (scanner.hasNextInt()) {
                 int issueNumber = scanner.nextInt();
+                if (!incorrectIssueNumber(issueNumber)) {
+                    return issueNumber;
+                }
             } else {
-                int issueNumber = scanner.next();
+                System.out.println("\nYou may not enter anything other than an integer");
             }
         }
     }
     
     public static int promptForPublicationYear(Scanner scanner) {
         while (true) {
-            System.out.println("Please enter a valid publication year, greater than 0:");
+            System.out.println("\nPlease enter a valid publication year, greater than 0:");
             if (scanner.hasNextInt()) {
                 int publicationYear = scanner.nextInt();
+                if (!incorrectIssueNumber(publicationYear)) {
+                    return publicationYear;
+                }
             } else {
-                int publicationYear = scanner.next();
+                System.out.println("\nYou may not enter anything other than an integer");
             }
         }
     }
