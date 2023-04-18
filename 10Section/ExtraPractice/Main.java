@@ -84,8 +84,8 @@ public class Main {
         while (true) {
             System.out.println("\nPlease enter a valid title: ");
             String title = scanner.nextLine();
-            boolean invalidInput = isNullOrBlank(title);
-            if (!invalidInput) {
+            // boolean invalidInput = isNullOrBlank(title);
+            if (!isNullOrBlank(title)) {
                 return title;
             }
         }
@@ -95,8 +95,8 @@ public class Main {
         while (true) {
             System.out.println("\nPlease enter a valid publisher: ");
             String publisher = scanner.nextLine();
-            boolean invalidInput = isNullOrBlank(publisher);
-            if (!invalidInput) {
+            // boolean invalidInput = isNullOrBlank(publisher);
+            if (!isNullOrBlank(publisher)) {
                 return publisher;
             }
         }
