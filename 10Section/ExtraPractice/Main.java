@@ -69,24 +69,15 @@ public class Main {
     }
     
     public static boolean isNullOrBlank(String input) {
-        if (input == null || input.isBlank()) {
-            return true;
-        }
-        return false;
+         return (input == null || input.isBlank());
     }
     
     public static boolean incorrectIssueNumber(int issueNumber) {
-        if (issueNumber <= 0) {
-            return true;
-        }
-        return false;
+        return (issueNumber <= 0);
     }
     
     public static boolean incorrectPublicationYear(int publicationYear) {
-        if (publicationYear <= 0) {
-            return true;
-        }
-        return false;
+        return (publicationYear <= 0); 
     }
     
     public static String promptForTitle(Scanner scanner) {
