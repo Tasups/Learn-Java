@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Main {
     
     public static void main(String[] args) {
@@ -45,4 +47,61 @@ public class Main {
         // Magazine magazine2 = new Magazine("", "Publisher 2", 2, 2020);
     }
     
+    public static boolean isNullOrBlank(String input) {
+        if (input == null || input.isBlank()) {
+            return true;
+        }
+    }
+    
+    public static boolean incorrectIssueNumber(int issueNumber) {
+        if (issueNumber <= 0) {
+            return true;
+        }
+    }
+    
+    public static boolean incorrectPublicationYear(int publicationYear) {
+        if (publicationYear <= 0) {
+            return true;
+        }
+    }
+    
+    public static String promptForTitle(Scanner scanner) {
+        while (true) {
+            System.out.println("\nPlease enter a valid title: ");
+            String title = scanner.nextLine();
+            isNullOrBlank(title);
+        }
+        return title;
+    }
+    
+    public static String promptForPublisher(Scanner scanner) {
+        while (true) {
+            System.out.println("\nPlease enter a valid publisher: ");
+            String publisher = scanner.nextLine();
+            isNullOrBlank(publisher);
+        }
+        return publisher;
+    }
+    
+    public static int promptForIssueNumber(Scanner scanner) {
+        while (true) {
+            System.out.println("Please enter a valid issue number, greater than 0: ");
+            if (scanner.hasNextInt()) {
+                int issueNumber = scanner.nextInt();
+            } else {
+                int issueNumber = scanner.next();
+            }
+        }
+    }
+    
+    public static int promptForPublicationYear(Scanner scanner) {
+        while (true) {
+            System.out.println("Please enter a valid publication year, greater than 0:");
+            if (scanner.hasNextInt()) {
+                int publicationYear = scanner.nextInt();
+            } else {
+                int publicationYear = scanner.next();
+            }
+        }
+    }
 }
