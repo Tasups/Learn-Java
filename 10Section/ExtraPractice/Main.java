@@ -105,13 +105,13 @@ public class Main {
     public static int promptForIssueNumber(Scanner scanner) {
         while (true) {
             System.out.println("\nPlease enter a valid issue number, greater than 0: ");
-            if (scanner.hasNextInt()) {
-                int issueNumber = scanner.nextInt();
-                if (!incorrectIssueNumber(issueNumber)) {
-                    return issueNumber;
-                }
-            } else {
-                System.out.println("\nYou may not enter anything other than an integer");
+            if (!scanner.hasNextInt()) {
+                scanner.next();
+                continue;
+            }
+            int issueNumber = scanner.nextInt();
+            if (!incorrectIssueNumber(issueNumber)) {
+                return issueNumber;
             }
         }
     }
@@ -119,13 +119,13 @@ public class Main {
     public static int promptForPublicationYear(Scanner scanner) {
         while (true) {
             System.out.println("\nPlease enter a valid publication year, greater than 0:");
-            if (scanner.hasNextInt()) {
-                int publicationYear = scanner.nextInt();
-                if (!incorrectIssueNumber(publicationYear)) {
-                    return publicationYear;
-                }
-            } else {
-                System.out.println("\nYou may not enter anything other than an integer");
+            if (!scanner.hasNextInt()) {
+                scanner.next();
+                continue;
+            }
+            int publicationYear = scanner.nextInt();
+            if (!incorrectIssueNumber(publicationYear)) {
+                return publicationYear;
             }
         }
     }
