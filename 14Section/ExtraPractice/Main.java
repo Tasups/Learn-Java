@@ -57,4 +57,21 @@ public class Main {
         
     }
     
+    public static boolean isNullOrBlank(String input) {
+        return (input == null || input.isBlank());
+    }
+    
+    public static boolean invalidYear(int year) {
+        return (year < Car.MIN_YEAR);
+    }
+    
+    public static boolean invalidPrice(double price) {
+        return (price <= Car.MIN_PRICE || price > Car.MAX_PRICE);
+    }
+    
+    public static boolean invalidBodyType(String input) {
+        String inputToCapital = input.toUpperCase();
+        if (!BodyType.valueOf(inputToCapital))
+    }
+    
 }
