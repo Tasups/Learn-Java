@@ -3,6 +3,10 @@ package shape;
 public class Shape {    
 
     private double radius;
+    
+    public Shape(double radius) {
+        setRadius(radius);
+    }
      
     public double getRadius() {
         return this.radius;
