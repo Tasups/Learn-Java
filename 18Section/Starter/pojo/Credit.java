@@ -18,6 +18,15 @@ public class Credit extends Account {
     public void setCredit(BigDecimal credit) {
         this.credit = credit;
     }
-
+    
+    @Override
+    public Account clone() {
+        return new Credit(super.getId(), this.credit);
+    }
+    
+    @Override
+    public String toString() {
+        return "Account: " + super.getId() + " || Balance: " + credit; 
+    }
 
 }

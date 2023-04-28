@@ -15,5 +15,10 @@ public abstract class Account {
     public void setId(String id) {
         this.id = id;
     }
-
+    
+    public abstract Account clone();
+    
+    @Override
+    public abstract String toString();
+    
 }
