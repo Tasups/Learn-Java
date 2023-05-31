@@ -46,7 +46,6 @@ public class Main {
                 // 2. Anticipate the choice being incorrect.
                 if (choice < 0 || choice > 9) {
                     System.out.println("Your choice must be between 0 - 9 and be a whole number");
-                    return true;
                 }
                 return choice;
             }
@@ -69,7 +68,6 @@ public class Main {
                 // 2. Anticipate the rating being incorrect.
                 if (rating < 0 || rating > 10) {
                     System.out.println("Your rating must be between 0 - 10 and must be a number");
-                    return true;
                 }
                 return rating;
             }
@@ -84,11 +82,13 @@ public class Main {
     }
     
     public static void loadMovies(String filename) throws FileNotFoundException {
-        fileInputStream fis = new FileInputStream(filename);
+        FileInputStream fis = new FileInputStream(filename);
         Scanner scanFile = new Scanner(fis);
         
         while (scanFile.hasNextLine()) {
-            //TODO
+            String line = scanFile.nextLine();
+            String[] words = line.split("--");
+            store.addMovie(new Movie(words[0], words[1], Double.parseDouble(words[2])));
         }
         scanFile.close();
     }

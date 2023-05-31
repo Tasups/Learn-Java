@@ -1,6 +1,8 @@
 public class Store {
 
     private Movie[] movies;
+    
+    private List<Movie> movies;
 
     public Store() {
         this.movies = new Movie[10];

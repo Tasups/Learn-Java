@@ -8,6 +8,10 @@ import repository.AccountRepository;
 public class CheckingService implements AccountService {
 
     private AccountRepository repository;
+    
+    public CheckingService(AccountRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public void deposit(String id, BigDecimal amount) {
@@ -21,10 +25,6 @@ public class CheckingService implements AccountService {
         Checking account = retrieveAccount(id);
         account.setBalance(account.getBalance().subtract(amount));
         updateAccount(account);
-    }
-
-    public CheckingService(AccountRepository repository) {
-        this.repository = repository;
     }
 
     public void createAccount(Checking account) {
